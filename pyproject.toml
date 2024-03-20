@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pdgsubsurface"
+version = "0.0.1"
+description = "Workflow to convert location-enabled subsurface profile data (ground-penetrating radar, seismic reflection) to Cesium visualization"
+authors = ["Ian Nesbitt <ian.nesbitt@gmail.com>"]
+license = "Apache 2.0"
+readme = "README.md"
+include = [
+    "subsurface/testdata/*",
+    "subsurface/log/*"
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+readgssi = "^0.0.22"
+pyproj = "^3.6.1"
+pyegt = "^0.1.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
