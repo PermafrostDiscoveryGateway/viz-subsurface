@@ -9,11 +9,11 @@ from . import geoid
 
 class Pipeline():
     """
-    Process GPR data to create a Cesium model that represents a subsurface profile.
+    Process GPR data to create a 3dTiles model that represents a subsurface profile.
 
     :param gpr_files: The GPR files to process.
     :type gpr_files: str, Path
-    :param output_dir: The output directory to save the Cesium model.
+    :param output_dir: The output directory in which to save the model.
     :type output_dir: str, Path
     """
     def __init__(self, gpr_files: Union[str, Path], output_dir: Union[str, Path]):
@@ -23,7 +23,7 @@ class Pipeline():
 
     def process(self):
         """
-        Process the GPR data to create a Cesium model.
+        Process the GPR data to create a 3dTiles model.
         """
         # Create radar profiles
         radar_profiles = self.create_radar_profiles()
@@ -32,8 +32,8 @@ class Pipeline():
         location_info = self.extract_location_info()
         depth_info = self.extract_depth_info()
 
-        # Create wall-style Cesium model
-        self.create_cesium_model(radar_profiles, location_info, depth_info)
+        # Create model
+        self.create_3dtiles_model(radar_profiles, location_info, depth_info)
 
     def create_radar_profiles(self):
         """
@@ -65,11 +65,10 @@ class Pipeline():
         depth_info = utils.extract_depth_info(self.gpr_files)
         return depth_info
 
-    def create_cesium_model(self, radar_profiles, location_info, depth_info):
+    def create_3dtiles_model(self, radar_profiles, location_info, depth_info):
         """
-        Create a 
-        `wall-style Cesium model <https://sandcastle.cesium.com/?src=Wall.html>`_
-        using radar profiles, location array, and depth information.
+        Create a 3dTiles model using radar profiles, location array, and depth
+        information.
 
         :param radar_profiles: The radar profiles representing subsurface conditions.
         :type radar_profiles: list
@@ -78,8 +77,7 @@ class Pipeline():
         :param depth_info: The information about the depth.
         :type depth_info: dict
         """
-        # Use location information, depth information, and subsurface image data to create a wall-style Cesium model
-        # (https://sandcastle.cesium.com/?src=Wall.html)
+        # Use location information, depth information, and subsurface image data to create a 3dTiles model
         # Paint the model with a GPR profile image that represents subsurface conditions
         # Implement the logic here
         pass
